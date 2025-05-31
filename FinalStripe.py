@@ -2,6 +2,7 @@ import logging
 import requests
 import uuid
 import random
+import os
 from bs4 import BeautifulSoup
 from faker import Faker
 from telegram import Update
@@ -118,8 +119,7 @@ async def chk(update: Update, context: CallbackContext):
 # Setup the bot and handlers
 def main():
     # Bot token provided
-    bot_token = "7664126508:AAFIQGsEC--z9cni9xuQCwUA56LQ8klIf4c"
-    application = Application.builder().token(bot_token).build()
+    bot_token = os.getenv("BOT_TOKEN")
 
     # Add command handler
     application.add_handler(CommandHandler('chk', chk))
